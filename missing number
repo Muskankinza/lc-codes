@@ -1,0 +1,41 @@
+**https://leetcode.com/problems/missing-number/**
+in this keeping the res rray values as "1" i its present else by default "0 so return if res[i]==0 
+class Solution {
+    public int missingNumber(int[] nums) {
+      int n=nums.length;
+        int mis=-1;
+        int res[]=new int[n+1];
+        for(int i=0;i<n;i++){
+            res[nums[i]]=1;
+        }
+        for(int i=0;i<n+1;i++){
+            if(res[i]==0){
+                mis=i;
+            }
+        }
+        return mis;
+    }
+}
+TC:Code Breakdown:
+Initialization of the res array:
+
+int res[] = new int[n + 1];
+This operation takes O(n+1) to initialize the array, but initializing an array of size n+1 is typically considered O(n) since the constant +1 doesn't affect the asymptotic complexity.
+First Loop (Marking the numbers):
+
+for (int i = 0; i < n; i++) { res[nums[i]] = 1; }
+This loop iterates through the nums array of size n, performing a constant-time operation (res[nums[i]] = 1) for each element.
+This loop runs O(n).
+Second Loop (Finding the missing number):
+
+for (int i = 0; i < n + 1; i++) { if (res[i] == 0) { mis = i; } }
+This loop iterates through the res array of size n+1, performing a constant-time check for each element.
+This loop runs O(n+1), which simplifies to O(n).
+Overall Time Complexity:
+The first loop runs in O(n) time.
+The second loop runs in O(n) time.
+The array initialization is also O(n).
+Thus, the overall time complexity is O(n).
+
+Space Complexity:
+You are using an additional array res[] of size n+1, so the space complexity is O(n) as well.
